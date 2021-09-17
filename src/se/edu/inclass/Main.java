@@ -20,6 +20,9 @@ public class Main {
         printDeadlines(tasksData);
 
         System.out.println("Total number of deadlines: " + countDeadlines(tasksData));
+        printDeadlinesUsingString(tasksData);
+        System.out.println("Total number of deadlines (unsing stream) "
+                + countDeadlinesUsingStreams(tasksData));
 
     }
 
@@ -59,5 +62,12 @@ public class Main {
                 System.out.println(t);
             }
         }
+    }
+
+    public static void printDeadlinesUsingString(ArrayList<Task> tasks) {
+        System.out.println("Printing deadlines using stream");
+        tasks.stream()
+                .filter((t) -> t instanceof Deadline) // filtering operation
+                .forEach(System.out::println); //applying println for each member (terminal operator)
     }
 }
